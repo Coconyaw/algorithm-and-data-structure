@@ -1,3 +1,5 @@
+# AOJ ALDS1_6_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_6_C
+
 class Card():
     def __init__(self, suit: chr, number: int):
         self.suit = suit

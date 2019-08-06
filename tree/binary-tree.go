@@ -1,3 +1,5 @@
+// AOJ ALDS1_7_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_7_B
+
 package main
 
 import (
@@ -30,16 +32,16 @@ func (t tree) setDepthAll() {
 func (t tree) setDepthUnder(id, depth int) {
 	t[id].depth = depth
 	if t[id].left != NULL {
-		t.setDepthUnder(t[id].left, depth + 1)
+		t.setDepthUnder(t[id].left, depth+1)
 	}
 	if t[id].right != NULL {
-		t.setDepthUnder(t[id].right, depth + 1)
+		t.setDepthUnder(t[id].right, depth+1)
 	}
 }
 
 func (t tree) setHeightALL() {
 	root := t.getRoot()
-	t.setHeightUnder(root)	
+	t.setHeightUnder(root)
 }
 
 func (t tree) setHeightUnder(id int) int {
@@ -76,7 +78,7 @@ func main() {
 
 	T := make(tree, n)
 	for i := 0; i < n; i++ {
-		T[i] = node{NULL, NULL, NULL, 0, NULL, NULL, 0}	
+		T[i] = node{NULL, NULL, NULL, 0, NULL, NULL, 0}
 	}
 
 	var id, left, right int
@@ -84,7 +86,7 @@ func main() {
 	// struct binary tree
 	for i := 0; i < n; i++ {
 		fmt.Scanf("%d %d %d", &id, &left, &right)
-		
+
 		if left != NULL {
 			T[left].parent = id
 		}
@@ -113,6 +115,6 @@ func main() {
 	T.setHeightALL()
 	for i, v := range T {
 		fmt.Printf("node %d: parent = %d, sibling = %d, degree = %d, depth = %d, height = %d, %s\n",
-		 			i, v.parent, v.sibling, v.degree, v.depth, v.height, T.getType(i))
+			i, v.parent, v.sibling, v.degree, v.depth, v.height, T.getType(i))
 	}
 }

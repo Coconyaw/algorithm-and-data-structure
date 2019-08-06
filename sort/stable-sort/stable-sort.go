@@ -1,8 +1,10 @@
+// AOJ ALDS1_2_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_2_C
+
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -46,7 +48,7 @@ func SelectionSort(A []string, N int) []string {
 			num1 := getNumberOfCard(ss[j])
 			num2 := getNumberOfCard(ss[minj])
 			if num1 < num2 {
-				minj = j 
+				minj = j
 			}
 		}
 		ss[i], ss[minj] = ss[minj], ss[i]
@@ -61,21 +63,21 @@ func getNumberOfCard(card string) int {
 
 func isStable(in, out []string, N int) {
 	for i := 0; i < N; i++ {
-		for j := i+1; j < N; j++ {
-			for a :=0; a < N; a++ {
-				for b := a+1; b < N; b++ {
+		for j := i + 1; j < N; j++ {
+			for a := 0; a < N; a++ {
+				for b := a + 1; b < N; b++ {
 					num1 := getNumberOfCard(in[i])
 					num2 := getNumberOfCard(in[j])
 					if num1 == num2 && in[i] == out[b] && in[j] == out[a] {
 						fmt.Println("Not stable")
-						return 
+						return
 					}
 				}
 			}
 		}
 	}
 	fmt.Println("Stable")
-	return 
+	return
 }
 
 func main() {

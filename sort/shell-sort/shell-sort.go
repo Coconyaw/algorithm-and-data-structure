@@ -1,8 +1,10 @@
+// AOJ ALDS1_2_D: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_2_D
+
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -11,7 +13,7 @@ var sc = bufio.NewScanner(os.Stdin)
 var count int
 
 func trace(A []int, N int) {
-	for i := N-1; i >= 0; i-- {
+	for i := N - 1; i >= 0; i-- {
 		if i != N-1 {
 			fmt.Printf(" ")
 		}
@@ -46,8 +48,8 @@ func insertionSort(A []int, N, g int) {
 }
 
 func ShellSort(A []int, N int, m int, G []int) []int {
-	sorted := append([]int{}, A...)	
-	for i := m-1; i >= 0; i-- {
+	sorted := append([]int{}, A...)
+	for i := m - 1; i >= 0; i-- {
 		insertionSort(sorted, N, G[i])
 	}
 	return sorted
@@ -70,9 +72,8 @@ func main() {
 		h = 3*h + 1
 	}
 
-
 	sorted := ShellSort(array, length, len(G), G)
-	
+
 	fmt.Println(len(G))
 	trace(G, len(G))
 	fmt.Println(count)

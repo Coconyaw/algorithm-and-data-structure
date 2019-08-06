@@ -1,3 +1,5 @@
+// AOJ ALDS1_3_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_3_C
+
 package main
 
 /*
@@ -48,13 +50,13 @@ func (l *LinkedList) insert(key string) {
 func (l *LinkedList) delete(key string) {
 	node := l.searchList(key)
 	if node != nil {
-		l.deleteNode(node)	
+		l.deleteNode(node)
 	}
 }
 
 func (l *LinkedList) deleteNode(n *Node) {
 	if n == l.topnode {
-		return 
+		return
 	}
 	n.prev.next = n.next
 	n.next.prev = n.prev
@@ -123,11 +125,11 @@ func main() {
 }
 */
 import (
+	"bufio"
+	"container/list"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
-	"container/list"
 	"strings"
 )
 
@@ -156,13 +158,13 @@ func main() {
 		switch command {
 		case "insert":
 			key := nextString()
-			
+
 			linkList.PushFront(key)
 		case "delete":
 			key := nextString()
 			for e := linkList.Front(); e != nil; e = e.Next() {
 				if v := e.Value.(string); v == key {
-					linkList.Remove(e)	
+					linkList.Remove(e)
 					break
 				}
 			}

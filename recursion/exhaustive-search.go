@@ -1,10 +1,12 @@
+// AOJ ALDS1_5_A: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_A
+
 package main
 
 import (
-	"fmt"
-	"strconv"
 	"bufio"
+	"fmt"
 	"os"
+	"strconv"
 )
 
 var sc = bufio.NewScanner(os.Stdin)

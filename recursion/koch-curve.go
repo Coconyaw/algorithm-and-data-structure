@@ -1,3 +1,5 @@
+// AOJ ALDS1_5_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_C
+
 package main
 
 import (
@@ -22,8 +24,8 @@ func kochCurve(d int, p1, p2 point) {
 	s.y = (2*p1.y + p2.y) / 3
 	t.x = (p1.x + 2*p2.x) / 3
 	t.y = (p1.y + 2*p2.y) / 3
-	u.x = (t.x - s.x) * math.Cos(th) - (t.y - s.y) * math.Sin(th) + s.x
-	u.y = (t.x - s.x) * math.Sin(th) + (t.y - s.y) * math.Cos(th) + s.y
+	u.x = (t.x-s.x)*math.Cos(th) - (t.y-s.y)*math.Sin(th) + s.x
+	u.y = (t.x-s.x)*math.Sin(th) + (t.y-s.y)*math.Cos(th) + s.y
 
 	// first line of koch curve
 	kochCurve(d-1, p1, s)

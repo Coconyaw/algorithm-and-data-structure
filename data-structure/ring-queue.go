@@ -1,16 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
 
 type queue struct {
-	q [50000]process
+	q    [50000]process
 	head int
 	tail int
 }
@@ -21,8 +21,8 @@ type process struct {
 }
 
 type processScheduler struct {
-	q queue
-	quantum int
+	q        queue
+	quantum  int
 	execTime int
 }
 
@@ -45,7 +45,7 @@ func (q *queue) isEmpty() bool {
 }
 
 func (q *queue) isFull() bool {
-	return q.head == (q.tail + 1) % len(q.q)
+	return q.head == (q.tail+1)%len(q.q)
 }
 
 func (ps *processScheduler) addProcess() bool {
@@ -77,7 +77,6 @@ func (ps *processScheduler) executeProcess() {
 	ps.execTime += ps.quantum
 	ps.q.enqueue(p)
 }
-
 
 func main() {
 	sc.Split(bufio.ScanWords)

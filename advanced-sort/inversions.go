@@ -1,9 +1,11 @@
+// AOJ ALDS1_5_D: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
+
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
 )
 
@@ -18,7 +20,7 @@ func nextInt() int {
 }
 
 func mergeSort(A []int, left, right int) {
-	if left + 1 < right {
+	if left+1 < right {
 		mid := (left + right) / 2
 		mergeSort(A, left, mid)
 		mergeSort(A, mid, right)
@@ -30,8 +32,8 @@ func merge(A []int, left, mid, right int) {
 	n1 := mid - left
 	n2 := right - mid
 
-	L := make([]int, n1 + 1)
-	R := make([]int, n2 + 1)
+	L := make([]int, n1+1)
+	R := make([]int, n2+1)
 
 	for i := 0; i < n1; i++ {
 		L[i] = A[left+i]

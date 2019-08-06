@@ -1,8 +1,10 @@
+// AOJ ALDS1_7_A: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_7_A
+
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -24,12 +26,12 @@ func nextInt() int {
 // 再帰的に深さを求める
 func recursion(nodes []node, n, p int) {
 	nodes[n].depth = p
-	if (nodes[n].right != NULL) {
+	if nodes[n].right != NULL {
 		recursion(nodes, nodes[n].right, p)
 	}
-	
-	if (nodes[n].left != NULL) {
-		recursion(nodes, nodes[n].left, p + 1)
+
+	if nodes[n].left != NULL {
+		recursion(nodes, nodes[n].left, p+1)
 	}
 }
 
@@ -70,7 +72,7 @@ func main() {
 			nodes[c].parent = id
 		}
 	}
-	
+
 	// find root node
 	var root int
 	for i := 0; i < n; i++ {
@@ -88,6 +90,6 @@ func main() {
 		}
 		childlenStr := strings.Join(childlen, ", ")
 		nodeType := getNodeType(v)
-		fmt.Printf("node %d: parent = %d, depth = %d, %s, %s\n", i, v.parent, v.depth, nodeType, "[" + childlenStr + "]")
+		fmt.Printf("node %d: parent = %d, depth = %d, %s, %s\n", i, v.parent, v.depth, nodeType, "["+childlenStr+"]")
 	}
 }

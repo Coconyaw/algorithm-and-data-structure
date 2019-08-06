@@ -1,9 +1,11 @@
+// AOJ ALDS1_3_A: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_3_A
+
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
 )
 
@@ -11,7 +13,7 @@ var sc = bufio.NewScanner(os.Stdin)
 
 type Stack struct {
 	Stack [1000]int
-	Top int
+	Top   int
 }
 
 func getStack() *Stack {
@@ -33,7 +35,7 @@ func (s *Stack) Push(n int) {
 
 func (s *Stack) Pop() int {
 	s.Top--
-	return s.Stack[s.Top + 1]
+	return s.Stack[s.Top+1]
 }
 
 func main() {

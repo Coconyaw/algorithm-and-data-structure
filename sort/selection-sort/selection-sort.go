@@ -1,3 +1,5 @@
+// AOJ ALDS1_2_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_2_B
+
 package main
 
 import (

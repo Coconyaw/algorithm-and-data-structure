@@ -1,8 +1,10 @@
+// AOJ ALDS1_6_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_6_B
+
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"

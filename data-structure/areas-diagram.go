@@ -1,3 +1,5 @@
+// AOJ ALDS1_3_D: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_3_D
+
 package main
 
 import (
@@ -8,12 +10,12 @@ import (
 
 type Stack struct {
 	Stack [20000]interface{}
-	Top int
+	Top   int
 }
 
 type puddle struct {
 	first int
-	area int
+	area  int
 }
 
 func getStack() *Stack {
@@ -39,7 +41,7 @@ func (s *Stack) Pop() interface{} {
 		return -1
 	}
 	s.Top--
-	return s.Stack[s.Top + 1]
+	return s.Stack[s.Top+1]
 }
 
 func (s *Stack) Peek() interface{} {
@@ -79,7 +81,7 @@ func main() {
 	}
 
 	puddleNum := puddles.Top
-	array := make([]string, puddles.Top + 1)
+	array := make([]string, puddles.Top+1)
 	for {
 		p := puddles.Pop()
 		if p == -1 {
@@ -90,8 +92,8 @@ func main() {
 	array = append(array, strconv.Itoa(puddleNum))
 
 	// reverse array
-	for i := len(array)/2-1; i >= 0; i-- {
-		opp := len(array)-1-i
+	for i := len(array)/2 - 1; i >= 0; i-- {
+		opp := len(array) - 1 - i
 		array[i], array[opp] = array[opp], array[i]
 	}
 

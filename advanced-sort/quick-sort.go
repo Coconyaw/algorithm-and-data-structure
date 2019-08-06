@@ -1,9 +1,11 @@
+// AOJ ALDS1_6_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_6_C
+
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
 	"strings"
 )
@@ -11,7 +13,7 @@ import (
 var sc = bufio.NewScanner(os.Stdin)
 
 type card struct {
-	suit string
+	suit   string
 	number int
 }
 
@@ -39,12 +41,12 @@ func isStable(A, S []card) bool {
 		if A[i] != S[i] {
 			return false
 		}
-	}	
+	}
 	return true
 }
 
 func mergeSort(A []card, left, right int) {
-	if left + 1 < right {
+	if left+1 < right {
 		mid := (left + right) / 2
 		mergeSort(A, left, mid)
 		mergeSort(A, mid, right)
@@ -52,7 +54,7 @@ func mergeSort(A []card, left, right int) {
 	}
 }
 
-func merge(A [] card, left, mid, right int) {
+func merge(A []card, left, mid, right int) {
 	n1 := mid - left
 	n2 := right - mid
 	L := make([]card, n1+1)

@@ -1,8 +1,9 @@
+// AOJ ALDS1_6_A: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_6_A
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -38,7 +39,7 @@ func countingSort(A []int) []int {
 	}
 
 	for i := len(A) - 1; i >= 0; i-- {
-		S[c[A[i]] - 1] = A[i]
+		S[c[A[i]]-1] = A[i]
 		c[A[i]]--
 	}
 

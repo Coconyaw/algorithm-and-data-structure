@@ -1,16 +1,17 @@
+// AOJ ALDS1_3_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_3_B
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strconv"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
 
 type queue struct {
-	q [100005]process
+	q    [100005]process
 	head int
 	tail int
 }
@@ -21,8 +22,8 @@ type process struct {
 }
 
 type processScheduler struct {
-	q queue
-	quantum int
+	q        queue
+	quantum  int
 	execTime int
 }
 
@@ -33,7 +34,7 @@ func (q *queue) enqueue(p process) {
 
 func (q *queue) dequeue() process {
 	q.head++
-	return q.q[q.head - 1]
+	return q.q[q.head-1]
 }
 
 func (q *queue) isEmpty() bool {
@@ -69,7 +70,6 @@ func (ps *processScheduler) executeProcess() {
 	ps.execTime += ps.quantum
 	ps.q.enqueue(p)
 }
-
 
 func main() {
 	sc.Split(bufio.ScanWords)

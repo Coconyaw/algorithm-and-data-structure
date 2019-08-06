@@ -1,8 +1,10 @@
+// AOJ ALDS1_5_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_B
+
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -10,6 +12,7 @@ import (
 
 var sc = bufio.NewScanner(os.Stdin)
 var cnt = 0
+
 const inf = 1 << 32
 
 func nextInt() int {
@@ -22,14 +25,14 @@ func nextInt() int {
 *  1. 指定されたn個の要素を含む部分配列をそれぞれ n/2 個の要素を含む２つの部分配列に分割する
 *  2. 分割した2つの部分配列をそれぞれmergeSortでソートする
 *  3. 得られたソート済み部分配列を merge により統合する
-*/
+ */
 func mergeSort(A []int, left, right int) {
-	if left + 1 < right {
+	if left+1 < right {
 		mid := (left + right) / 2
 		mergeSort(A, left, mid)
 		mergeSort(A, mid, right)
 		merge(A, left, mid, right)
-	} 
+	}
 }
 
 func merge(A []int, l, m, r int) {

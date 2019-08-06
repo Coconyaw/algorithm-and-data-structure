@@ -1,11 +1,13 @@
+// AOJ ALDS1_4_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_C
+
 package main
 
 import (
-	"fmt"
-	"strconv"
-	"os"
 	"bufio"
 	"errors"
+	"fmt"
+	"os"
+	"strconv"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
@@ -24,7 +26,7 @@ func h2(key, m int) int {
 	return 1 + (key % (m - 1))
 }
 func hash(key, i, m int) int {
-	return (h1(key, m) + i * h2(key, m)) % m
+	return (h1(key, m) + i*h2(key, m)) % m
 }
 
 func hashInseart(a []int, key int) int {
