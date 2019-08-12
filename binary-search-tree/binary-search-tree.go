@@ -1,11 +1,12 @@
 // AOJ ALDS1_8_A: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_A
 // AOJ ALDS1_8_B: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_B
+// AOJ ALDS1_8_C: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_C
 
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -46,13 +47,13 @@ func insert(key int) {
 	}
 }
 
-func find(key int) bool {
+func find(key int) *node {
 	// start root node
 	x := root
 	for x != nil {
 		// find key
 		if x.key == key {
-			return true
+			return x
 		}
 
 		// move node
@@ -62,7 +63,64 @@ func find(key int) bool {
 			x = x.right
 		}
 	}
-	return false
+	return nil
+}
+
+func delete(n *node) {
+
+	// 削除対象のnodeをyとする
+	// nodeに子がない場合または子が1つの場合はnodeを削除対象にする
+	// 子が2つある場合はnodeの次節点を削除対象にする
+	var y *node
+	if n.left == nil || n.right == nil {
+		y = n
+	} else {
+		y = getSuccessor(n)
+	}
+
+	// yの子xを決める
+	var x *node
+	if y.left != nil {
+		x = y.left
+	} else {
+		x = y.right
+	}
+
+	// yの親子を繋ぎ変えてyを削除
+	if x != nil {
+		x.parent = y.parent // xの親を設定
+	}
+	if y.parent == nil {
+		root = x // yがrootのとき、xをrootに設定する
+	} else if y == y.parent.left {
+		y.parent.left = x // yがyの親の左の子なら、xをyの親の左の子として設定する
+	} else {
+		y.parent.right = x // yがyの親の右の子なら、xをyの親の右の子として設定する
+	}
+
+	if y != n { // nの次節点が削除された場合
+		n.key = y.key // yのkeyをnにコピーする
+	}
+}
+
+func getSuccessor(n *node) *node {
+	if n.right != nil {
+		return getMinimum(n.right)
+	}
+
+	y := n.parent
+	for y != nil && n == y.right {
+		n = y
+		y = n.parent
+	}
+	return y
+}
+
+func getMinimum(x *node) *node {
+	for x.left != nil {
+		x = x.left
+	}
+	return x
 }
 
 func inorder(u *node, list []int) []int {
@@ -120,10 +178,15 @@ func main() {
 			insert(key)
 		case "find":
 			key = nextInt()
-			if exist := find(key); exist {
+			if exist := find(key); exist != nil {
 				fmt.Println("yes")
 			} else {
 				fmt.Println("no")
+			}
+		case "delete":
+			key = nextInt()
+			if node := find(key); node != nil {
+				delete(node)
 			}
 		case "print":
 			printList(inorder(root, []int{}))
