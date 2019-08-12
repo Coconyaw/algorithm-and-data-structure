@@ -3,11 +3,11 @@
 package main
 
 import (
-	"fmt"
-	"strings"
-	"strconv"
 	"bufio"
+	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
@@ -30,7 +30,7 @@ func index(a []int, key int) int {
 }
 
 func recursion(pre, in []int, l, r int) {
-	if (l >= r) {
+	if l >= r {
 		return
 	}
 
