@@ -11,7 +11,7 @@ import (
 * c[i][j]をXのi文字目, Yのj文字目までの最長共通部分列とすると
 * Xi==Yjのとき c[i][j] = c[i-1][j-1j] + 1 (1文字前までの最長共通部分列+1)
 * Xi!=Yjのとき c[i][j] = max(c[i-1][j], c[i][j-1]) (どちらかの文字列の1文字前までの最長共通部分列)
-*/
+ */
 func main() {
 	var dataNum int
 	var s1, s2 string
