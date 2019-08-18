@@ -4,6 +4,7 @@ package main
 
 import (
 	"bufio"
+	"container/list"
 	"fmt"
 	"os"
 	"strconv"
@@ -51,10 +52,16 @@ func constructGraph(sc *bufio.Scanner) *graph {
 func (g *graph) dfs(r, color int) {
 	g.colors[r] = color
 
-	// Use recursion
-	for _, u := range g.graph[r] {
-		if g.colors[u] == nocolor {
-			g.dfs(u, color)
+	stack := list.New()
+	stack.PushFront(r)
+
+	for stack.Len() > 0 {
+		v := stack.Remove(stack.Front()).(int)
+		for _, u := range g.graph[v] {
+			if g.colors[u] == nocolor {
+				g.colors[u] = color
+				stack.PushFront(u)
+			}
 		}
 	}
 }
